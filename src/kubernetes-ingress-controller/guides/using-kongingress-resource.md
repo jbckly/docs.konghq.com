@@ -5,7 +5,8 @@ title: Using KongIngress resource
 In this guide, we will learn how to use KongIngress resource to control
 proxy behavior.
 
-{% if_version lt:2.8.x -%}
+{% if_version lte:2.7.x -%}
+
 {:.note}
 > **Note:** Many fields available on KongIngress are also available as
 > [annotations](/kubernetes-ingress-controller/{{page.kong_version}}/references/annotations).
