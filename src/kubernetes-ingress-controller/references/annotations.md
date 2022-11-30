@@ -23,10 +23,12 @@ Following annotations are supported on Ingress resources:
 | [`konghq.com/request-buffering`](#konghqcomrequest-buffering) | Set request buffering on routes created from this Ingress |
 | [`konghq.com/response-buffering`](#konghqcomresponse-buffering) | Set response buffering on routes created from this Ingress |
 | [`konghq.com/host-aliases`](#konghqcomhostaliases) | Additional hosts for routes created from this Ingress's rules |
-{% if_version lte:2.7.x %}
+
+{% if_version lte:2.7.x -%}
 | [`konghq.com/override`](#konghqcomoverride) | Control other routing attributes via KongIngress resource |
 {% endif_version %}
-{% if_version gte:2.8.x %}
+
+{%- if_version gte:2.8.x %}
 | [`konghq.com/override`](#konghqcomoverride) | (Deprecated, replace with per-setting annotations) Control other routing attributes with a KongIngress resource |
 | [`konghq.com/path-handling`](#konghqcompathhandling) | Sets the path handling algorithm |
 | [`konghq.com/headers.*`](#konghqcomheaders) | Set header values required to match rules in this Ingress |
@@ -47,10 +49,12 @@ Following annotations are supported on Service resources:
 | [`konghq.com/client-cert`](#konghqcomclient-cert) | Client certificate and key pair Kong should use to authenticate itself to a specific Kubernetes service |
 | [`konghq.com/host-header`](#konghqcomhost-header) | Set the value sent in the `Host` header when proxying requests upstream |
 | [`ingress.kubernetes.io/service-upstream`](#ingresskubernetesioservice-upstream) | Offload load-balancing to kube-proxy or sidecar |
-{% if_version lte:2.7.x %}
+
+{% if_version lte:2.7.x -%}
 | [`konghq.com/override`](#konghqcomoverride) | Fine grained routing and load-balancing |
 {% endif_version %}
-{% if_version gte:2.8.x %}
+
+{%- if_version gte:2.8.x %}
 | [`konghq.com/override`](#konghqcomoverride) | (Deprecated for non-upstream fields, replace with per-setting annotations) Control load balancing behavior with a KongIngress resource |
 | [`konghq.com/connect-timeout`](#konghqcomconnecttimeout) | Set the timeout for completing a TCP connection |
 | [`konghq.com/read-timeout`](#konghqcomreadtimeout) | Set the timeout for receiving an HTTP response after sending a request |
