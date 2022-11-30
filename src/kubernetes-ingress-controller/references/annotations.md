@@ -24,15 +24,15 @@ Following annotations are supported on Ingress resources:
 | [`konghq.com/response-buffering`](#konghqcomresponse-buffering) | Set response buffering on routes created from this Ingress |
 | [`konghq.com/host-aliases`](#konghqcomhostaliases) | Additional hosts for routes created from this Ingress's rules |
 
-{% if_version lte:2.7.x -%}
+{%- if_version lte:2.7.x -%}
 | [`konghq.com/override`](#konghqcomoverride) | Control other routing attributes via KongIngress resource |
-{% endif_version %}
+{%- endif_version -%}
 
 {%- if_version gte:2.8.x %}
 | [`konghq.com/override`](#konghqcomoverride) | (Deprecated, replace with per-setting annotations) Control other routing attributes with a KongIngress resource |
 | [`konghq.com/path-handling`](#konghqcompathhandling) | Sets the path handling algorithm |
 | [`konghq.com/headers.*`](#konghqcomheaders) | Set header values required to match rules in this Ingress |
-{% endif_version %}
+{%- endif_version %}
 
 `kubernetes.io/ingress.class` is normally required, and its value should match
 the value of the `--ingress-class` controller argument (`kong` by default).
@@ -50,17 +50,17 @@ Following annotations are supported on Service resources:
 | [`konghq.com/host-header`](#konghqcomhost-header) | Set the value sent in the `Host` header when proxying requests upstream |
 | [`ingress.kubernetes.io/service-upstream`](#ingresskubernetesioservice-upstream) | Offload load-balancing to kube-proxy or sidecar |
 
-{% if_version lte:2.7.x -%}
+{%- if_version lte:2.7.x -%}
 | [`konghq.com/override`](#konghqcomoverride) | Fine grained routing and load-balancing |
-{% endif_version %}
+{%- endif_version -%}
 
-{%- if_version gte:2.8.x %}
+{%- if_version gte:2.8.x -%}
 | [`konghq.com/override`](#konghqcomoverride) | (Deprecated for non-upstream fields, replace with per-setting annotations) Control load balancing behavior with a KongIngress resource |
 | [`konghq.com/connect-timeout`](#konghqcomconnecttimeout) | Set the timeout for completing a TCP connection |
 | [`konghq.com/read-timeout`](#konghqcomreadtimeout) | Set the timeout for receiving an HTTP response after sending a request |
 | [`konghq.com/write-timeout`](#konghqcomwritetimeout) | Set the timeout for writing data |
 | [`konghq.com/retries`](#konghqcomretries) | Set the number of times to retry requests that failed |
-{% endif_version %}
+{%- endif_version %}
 
 ## KongConsumer resource
 
