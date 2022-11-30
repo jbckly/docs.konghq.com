@@ -459,7 +459,7 @@ Results in two routes:
 > resource](https://github.com/Kong/kubernetes-ingress-controller/issues/3174),
 > but this is still in development and `upstream` is not officially
 > deprecated yet.
-{% endif_version -%}
+{% endif_version %}
 
 This annotation can associate a KongIngress resource with
 an Ingress or a Service resource.
