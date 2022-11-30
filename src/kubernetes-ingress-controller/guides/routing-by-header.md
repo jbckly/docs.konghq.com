@@ -2,6 +2,11 @@
 title: Routing by Header
 ---
 
+In addition to URL components, {{site.base_gateway}} can route HTTP requests
+using request header values. This guide will walk through creating routes that
+use the same URL, but send traffic to different upstream services based on the
+requests' headers.
+
 ## Installation
 
 Follow the [deployment](/kubernetes-ingress-controller/{{page.kong_version}}/deployment/overview) documentation to install

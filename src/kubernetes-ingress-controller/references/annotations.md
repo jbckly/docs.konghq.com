@@ -55,7 +55,7 @@ Following annotations are supported on Service resources:
 | [`konghq.com/connect-timeout`](#konghqcomconnecttimeout) | Set the timeout for completing a TCP connection |
 | [`konghq.com/read-timeout`](#konghqcomreadtimeout) | Set the timeout for receiving an HTTP response after sending a request |
 | [`konghq.com/write-timeout`](#konghqcomwritetimeout) | Set the timeout for writing data |
-| [`konghq.com/retries`](#konghqcomretries) | |
+| [`konghq.com/retries`](#konghqcomretries) | Set the number of times to retry requests that failed |
 {% endif_version %}
 
 ## KongConsumer resource
