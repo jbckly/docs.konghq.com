@@ -587,7 +587,7 @@ rule's `path` field) are combined into the path sent upstream.
 Sets header values that are required for requests to match rules in an Ingress.
 
 Unlike most annotations, `konghq.com/headers.*` includes part of the
-configuration in the annotation name: the string after the `.` in the
+configuration in the annotation name. The string after the `.` in the
 annotation name is the header, and the value is a CSV of allowed header values.
 
 For example, setting `konghq.com/headers.x-routing: alpha,bravo` will only
