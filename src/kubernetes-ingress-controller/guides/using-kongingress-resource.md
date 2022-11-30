@@ -15,8 +15,10 @@ proxy behavior.
 > annotation value will take precedence over a KongIngress value if both set
 > the same setting. This guide focuses on settings that can only be set using
 > KongIngress.
+
 {% endif_version -%}
 {% if_version gte:2.8.x -%}
+
 {:.note}
 > As of version 2.8, KongIngress sections other than `upstream` are
 > [deprecated](https://github.com/Kong/kubernetes-ingress-controller/issues/3018).
@@ -28,10 +30,11 @@ proxy behavior.
 > need to instead apply a `konghq.com/connect-timeout: 30000` annotation to the
 > Service.
 > 
-> Plans are to replace the `upstream` section of KongIngress with [a new
+> The `upstream` section of KongIngress will be replaced with [a new
 > resource](https://github.com/Kong/kubernetes-ingress-controller/issues/3174),
-> but this is still in development and `upstream` is not yet officially
-> deprecated.
+> but this is still in development and `upstream` is not officially
+> deprecated yet.
+
 {% endif_version -%}
 
 ## Installation

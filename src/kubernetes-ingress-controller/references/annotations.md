@@ -23,8 +23,8 @@ Following annotations are supported on Ingress resources:
 | [`konghq.com/request-buffering`](#konghqcomrequest-buffering) | Set request buffering on routes created from this Ingress |
 | [`konghq.com/response-buffering`](#konghqcomresponse-buffering) | Set response buffering on routes created from this Ingress |
 | [`konghq.com/host-aliases`](#konghqcomhostaliases) | Additional hosts for routes created from this Ingress's rules |
-{% if_version lt:2.8.x %}
-| [`konghq.com/override`](#konghqcomoverride) | Control other routing attributes via `KongIngress` resource |
+{% if_version lte:2.7.x %}
+| [`konghq.com/override`](#konghqcomoverride) | Control other routing attributes via KongIngress resource |
 {% endif_version %}
 {% if_version gte:2.8.x %}
 | [`konghq.com/override`](#konghqcomoverride) | (Deprecated, replace with per-setting annotations) Control other routing attributes with a KongIngress resource |
@@ -47,7 +47,7 @@ Following annotations are supported on Service resources:
 | [`konghq.com/client-cert`](#konghqcomclient-cert) | Client certificate and key pair Kong should use to authenticate itself to a specific Kubernetes service |
 | [`konghq.com/host-header`](#konghqcomhost-header) | Set the value sent in the `Host` header when proxying requests upstream |
 | [`ingress.kubernetes.io/service-upstream`](#ingresskubernetesioservice-upstream) | Offload load-balancing to kube-proxy or sidecar |
-{% if_version lt:2.8.x %}
+{% if_version lte:2.7.x %}
 | [`konghq.com/override`](#konghqcomoverride) | Fine grained routing and load-balancing |
 {% endif_version %}
 {% if_version gte:2.8.x %}
@@ -455,10 +455,10 @@ Results in two routes:
 > need to instead apply a `konghq.com/connect-timeout: 30000` annotation to the
 > Service.
 > 
-> Plans are to replace the `upstream` section of KongIngress with [a new
+> The `upstream` section of KongIngress will be replaced with [a new
 > resource](https://github.com/Kong/kubernetes-ingress-controller/issues/3174),
-> but this is still in development and `upstream` is not yet officially
-> deprecated.
+> but this is still in development and `upstream` is not officially
+> deprecated yet.
 {% endif_version -%}
 
 This annotation can associate a KongIngress resource with

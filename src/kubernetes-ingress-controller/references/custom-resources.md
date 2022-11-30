@@ -9,8 +9,7 @@ Following CRDs enables users to declaratively configure all aspects of Kong:
 
 - [**KongPlugin**](#kongplugin): This resource corresponds to
   the [Plugin][kong-plugin] entity in Kong.
-- [**KongIngress**](#kongingress): {% if_version gte:2.8.x -%}**(Partially deprecated)**{% endif_version %}
-  This resource provides fine-grained control over all aspects of proxy
+- [**KongIngress**](#kongingress): {% if_version gte:2.8.x -%}**(Partially deprecated)**{% endif_version %}This resource provides fine-grained control over all aspects of proxy
   behaviour like routing, load-balancing, and health checking. It serves as an
   "extension" to the Ingress resources in Kubernetes.
 - [**KongConsumer**](#kongconsumer):
@@ -243,7 +242,8 @@ meaning it will be executed for every request that is proxied via Kong.
 
 ## KongIngress
 
-{% if_version lt:2.8.x -%}
+{% if_version lte:2.7.x -%}
+
 {:.note}
 > **Note:** Many fields available on KongIngress are also available as
 > [annotations](/kubernetes-ingress-controller/{{page.kong_version}}/references/annotations).
@@ -254,6 +254,7 @@ meaning it will be executed for every request that is proxied via Kong.
 > the same setting.
 {% endif_version -%}
 {% if_version gte:2.8.x -%}
+
 {:.note}
 > As of version 2.8, KongIngress sections other than `upstream` are
 > [deprecated](https://github.com/Kong/kubernetes-ingress-controller/issues/3018).
@@ -269,6 +270,7 @@ meaning it will be executed for every request that is proxied via Kong.
 > resource](https://github.com/Kong/kubernetes-ingress-controller/issues/3174),
 > but this is still in development and `upstream` is not yet officially
 > deprecated.
+
 {% endif_version -%}
 
 Ingress resource spec in Kubernetes can define routing policies

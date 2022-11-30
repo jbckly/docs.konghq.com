@@ -4,18 +4,18 @@ title: Routing by Header
 
 ## Installation
 
-Please follow the [deployment](/kubernetes-ingress-controller/{{page.kong_version}}/deployment/overview) documentation to install
-the {{site.kic_product_name}} onto your Kubernetes cluster.
+Follow the [deployment](/kubernetes-ingress-controller/{{page.kong_version}}/deployment/overview) documentation to install
+the {{site.kic_product_name}} on your Kubernetes cluster.
 
-## Testing connectivity to Kong
+## Test connectivity to {{site.base_gateway}}
 
 This guide assumes that the `PROXY_IP` environment variable is
-set to contain the IP address or URL pointing to Kong.
-Please follow one of the
+set to contain the IP address or URL pointing to {{site.base_gateway}}.
+Follow one of the
 [deployment guides](/kubernetes-ingress-controller/{{page.kong_version}}/deployment/overview) to configure this environment variable.
 
-If everything is setup correctly, making a request to Kong should return
-HTTP 404 Not Found.
+If everything is setup correctly, making a request to {{site.base_gateway}} should return
+a HTTP `404` status code.
 
 {% navtabs codeblock %}
 {% navtab Command %}
@@ -36,9 +36,9 @@ Server: kong/1.2.1
 {% endnavtab %}
 {% endnavtabs %}
 
-This is expected as Kong does not yet know how to proxy the request.
+This is expected because {{site.base_gateway}} does not yet know how to proxy the request.
 
-## Install a dummy service
+## Install an example service
 
 We will start by installing the echo service and increasing its replica count:
 
@@ -74,7 +74,7 @@ deployment.apps/echo patched
 ## Setup Ingress
 
 Let's expose the echo service outside the Kubernetes cluster
-by defining an Ingress.
+by defining an Ingress:
 
 {% navtabs codeblock %}
 {% navtab Command %}
@@ -107,7 +107,7 @@ ingress.networking.k8s.io/demo-a created
 {% endnavtab %}
 {% endnavtabs %}
 
-Let's test:
+Test the echo service:
 
 {% navtabs codeblock %}
 {% navtab Command %}
@@ -152,11 +152,11 @@ Request Information:
 
 ## Adding header rules to the Ingress
 
-The `konghq.com/headers.*` annotation controls the `headers` field on Kong
+The `konghq.com/headers.*` annotation controls the `headers` field on {{site.base_gateway}}
 routes generated from Ingress resources. When set, these headers must be
 present with a specific value for a request to match a route.
 
-The header name is controlled by replacing the `*` in the example above with a
+The header name is configured by replacing the `*` in the example above with a
 header name. The `konghq.com/headers.x-split` and `konghq.com/headers.x-legacy`
 annotations indicate allowed values for the `x-split` and `x-legacy` headers,
 respectively. To start, add one of these to the `demo-a` Ingress:
@@ -179,7 +179,7 @@ Requests will no longer match the route:
 {% navtabs codeblock %}
 {% navtab Command %}
 ```bash
-$ curl -s $PROXY_IP/foo
+curl -s $PROXY_IP/foo
 ```
 {% endnavtab %}
 
@@ -226,8 +226,8 @@ ingress.networking.k8s.io/demo-b created
 {% endnavtab %}
 {% endnavtabs %}
 
-This Ingress will accept a different set of values for `x-split`, and
-furthermore require an `x-legacy` header:
+This Ingress will accept a different set of values for `x-split` and
+will require an `x-legacy` header:
 
 {% navtabs codeblock %}
 {% navtab Command %}
